@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> EXAMEN </title>
+</head>
+<body>
+    <div id="inicio">
+    <h1> EXAMEN </h1>
+    <br><br>
+    Desde: <input type="number" id="desde" name="desde">
+    <br> <br>
+    Hasta: <input type="number" id="hasta" name="hasta">
+    <br><br>
+    <input type="button" value="Generar" id="btnGenerar"> <input type="button" value="Dibujar" id="btnDibujar">
+    <br><br>
+    <input type="button" value="Iterador" id="btnIterador">
+    <br>
+    <div id="tabla">
+    <table border="1">
+
+            <tbody id="tbody">
+    
+            </tbody>
+        </table>
+    </div>
+  <hr>
+  <div id="rcedula">
+  cedula: <input type="number" id="cedula" name="cedula"
+  </div>
+  <br>
+  <input type="button" value="Procesar" id="btnProcesar">
+
+</body>
+<script>
+     document.getElementById("rcedula").style.display="none";
+    
+    document.getElementById("btnIterador").addEventListener("click",function enseñar(){ 
+        rcedula.style.display="block";
+        
+    });
+
+
+</script>
+
+<script>
+     function Solver(desde,despues,hasta) {
+        this.desde = desde;
+        this.hasta = hasta;      
+        this.generar = generar;
+
+        function generar() {
+            this.lista.push(this.desde);
+            this.lista.push(this.hasta);
+        }
+    }
+
+    var lista = [];
+
+    var generar = function(desde,hasta) {
+        if (((desde) % 3 === 0) < hasta) {
+            return lista;
+        } else {
+            nuevo = desde + hasta;
+            lista.push(nuevo);
+            return generar(desde, hasta);
+        }
+    }
+    document.getElementById("btnGenerar").addEventListener(
+        "click",
+        function() {
+            primerNumero = parseInt(document.getElementById("desde").value);
+            segundoNumero = parseInt(document.getElementById("hasta").value);
+            lista.push(primerNumero);
+            lista.push(segundoNumero);
+            generar(primerNumero, segundoNumero);
+
+        }
+    );
+
+
+    var indice=0;
+            var tabla = document.getElementById("tbody");
+document.getElementById("btnDibujar")
+.addEventListener("click",function muestraDatos(){
+if(indice === lista.length-1){
+
+        return 0;
+}else{
+
+    var fila = document.createElement("tr");
+    var fila1 = document.createElement("tr");
+    var fila2 = document.createElement("tr");
+    var td = document.createElement("td");
+    var td1 = document.createElement("td")
+    var td2 = document.createElement("td")
+    td.appendChild(document.createTextNode(lista[indice]));
+    td1.appendChild(document.createTextNode(lista[indice+1]));
+    td2.appendChild(document.createTextNode(lista[indice+2]));
+
+    fila.appendChild(td,);
+    fila.appendChild(td1);
+    fila.appendChild(td2);
+    tabla.appendChild(fila);
+    tabla.appendChild(fila1);
+    tabla.appendChild(fila2);
+    indice++;
+    muestraDatos(indice);
+}
+        })
+
+</script>
+<script>
+    var calcular = function(cedula) {
+        if (cedula % 2 === 0) {
+            console.log(lista + lista);
+        } else {
+            console.log(lista);
+        }
+    }
+    document.getElementById("btnProcesar").addEventListener(
+        "click",
+        function() {
+            numero = parseInt(document.getElementById("cedula").value);
+            lista.push(cedula);
+            calcular(numero);
+
+        }
+    );
+
+</script>
+
+</html>
